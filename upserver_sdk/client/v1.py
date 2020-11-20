@@ -20,7 +20,7 @@ from uuid import uuid4
 
 class UPSClient:
     def __init__(self, endpoint, jwtoken):
-        self.endpoint = endpoint
+        self.endpoint = endpoint.strip().strip("/") + "/api/v1"
         self.authotization = dict(Authorization=f"Bearer {jwtoken}")
 
     # @classmethod
@@ -45,7 +45,5 @@ class UPSClient:
         payload.update(dict(process_id=process_id)) if process_id else None
         payload.update(dict(http_callback=http_callback)) if http_callback else None
         return requests.post(
-            self.endpoint,
-            headers=self.authotization,
-            json=payload,
-        ).ok()
+            self.endpoint + "/process", headers=self.authotization, json=payload,
+        ).ok
