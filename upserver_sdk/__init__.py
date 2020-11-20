@@ -5,8 +5,8 @@ import requests
 __version__ = "0.1.0+rc0"
 
 
-def check_published(uri, version, extension=".tar.gz"):
-    url = os.path.join(uri, "upserver_sdk", "upserver_sdk-" + __version__ + extension)
+def check_published(uri, extension=".tar.gz"):
+    url = os.path.join(uri, "uprocserver-sdk", "uprocserver-sdk-" + __version__ + extension)
     sys.stdout.write(str(requests.head(url).ok))
 
 
