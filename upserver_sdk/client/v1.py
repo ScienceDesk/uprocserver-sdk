@@ -29,6 +29,7 @@ class UPSClient:
 
     def process(
         self,
+        bucket,
         runner_file,
         support_files_dir,
         input_files_dir,
@@ -36,12 +37,13 @@ class UPSClient:
         process_id=None,
         http_callback=None,
     ):
-        payload = {
-            "runner_file": runner_file,
-            "support_files_dir": support_files_dir,
-            "input_files_dir": input_files_dir,
-            "output_files_dir": output_files_dir,
-        }
+        payload = dict(
+            bucket=bucket,
+            runner_file=runner_file,
+            support_files_dir=support_files_dir,
+            input_files_dir=input_files_dir,
+            output_files_dir=output_files_dir,
+        )
         payload.update(dict(process_id=process_id)) if process_id else None
         payload.update(dict(http_callback=http_callback)) if http_callback else None
         return requests.post(
