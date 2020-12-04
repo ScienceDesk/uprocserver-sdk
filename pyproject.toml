@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "uprocserver-sdk"
-version = "0.1.0+rc1"
+version = "0.1.0+rc4"
 description = "Micro Process Server Python SDK"
 authors = [
     "ScienceDesk GmbH <github@sciencedesk.net>",

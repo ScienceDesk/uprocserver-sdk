@@ -6,5 +6,10 @@ create_setup:
 	tar -xvf dist/*.tar.gz --wildcards --no-anchored '*/setup.py' --strip=1
 	rm -rf dist
 
+pubdev:
+	# poetry config repositories.debonzi https://pypi.debonzi.dev/simple/
+	# poetry config http-basic.debonzi debonzi
+	poetry publish -n --build -r debonzi
+
 .DEFAULT_GOAL := help
 .PHONY: help
